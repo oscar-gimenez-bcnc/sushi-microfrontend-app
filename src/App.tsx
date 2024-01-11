@@ -1,25 +1,15 @@
-import React, { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import GenericError from './components/GenericError';
-import Header from './components/Header';
+import AppRouter from './routes';
 
-const SushiMicroFrontendUsers = React.lazy(() => import('SushiMicroFrontendUsers/SushiMicroFrontendUsers'));
-
-function App() {
+const App = () => {
   return (
     <div className="container mx-auto">
       <ErrorBoundary fallback={<GenericError />}>
-        <Header />
-        <div className="container mx-auto">
-          <div className="grid h-96 grid-cols-3 gap-4 overflow-x-auto">
-            <Suspense fallback={<div>Loading...</div>}>
-              <SushiMicroFrontendUsers />
-            </Suspense>
-          </div>
-        </div>
+        <AppRouter />
       </ErrorBoundary>
     </div>
   );
-}
+};
 
 export default App;
