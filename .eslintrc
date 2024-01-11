@@ -1,0 +1,23 @@
+{
+  "extends": ["airbnb-base", "prettier"],
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "plugins": ["tailwindcss", "simple-import-sort"],
+      "extends": [
+        "plugin:tailwindcss/recommended",
+        "airbnb",
+        "airbnb-typescript",
+        "plugin:prettier/recommended",
+        "plugin:react/jsx-runtime"
+      ],
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      },
+      "rules": {
+        "no-console": "off",
+        "react/function-component-definition": "off"
+      }
+    }
+  ]
+}
