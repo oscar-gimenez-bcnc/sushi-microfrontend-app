@@ -4,7 +4,7 @@ const SushiMicroFrontendPhotos = React.lazy(
   async () => await import('SushiMicroFrontendPhotos/SushiMicroFrontendPhotos')
 );
 
-const Photos: React.FC = () => {
+const PhotosPage: React.FC = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <SushiMicroFrontendPhotos />
@@ -12,4 +12,4 @@ const Photos: React.FC = () => {
   );
 };
 
-export default Photos;
+export default PhotosPage;

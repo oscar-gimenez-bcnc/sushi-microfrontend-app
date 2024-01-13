@@ -4,7 +4,7 @@ const SushiMicroFrontendAlbums = React.lazy(
   async () => await import('SushiMicroFrontendAlbums/SushiMicroFrontendAlbums')
 );
 
-const Albums: React.FC = () => {
+const AlbumsPage: React.FC = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <SushiMicroFrontendAlbums />
@@ -12,4 +12,4 @@ const Albums: React.FC = () => {
   );
 };
 
-export default Albums;
+export default AlbumsPage;

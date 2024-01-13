@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 
 const SushiMicroFrontendUsers = React.lazy(async () => await import('SushiMicroFrontendUsers/SushiMicroFrontendUsers'));
 
-const Users: React.FC = () => {
+const UsersPage: React.FC = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <SushiMicroFrontendUsers />
@@ -10,4 +10,4 @@ const Users: React.FC = () => {
   );
 };
 
-export default Users;
+export default UsersPage;
