@@ -50,7 +50,9 @@ module.exports = {
       name: 'SushiMicroFrontendApp',
       filename: 'remoteEntry.js',
       remotes: {
-        SushiMicroFrontendUsers: 'SushiMicroFrontendUsers@http://localhost:9001/remoteEntry.js'
+        SushiMicroFrontendUsers: 'SushiMicroFrontendUsers@http://localhost:9001/remoteEntry.js',
+        SushiMicroFrontendAlbums: 'SushiMicroFrontendAlbums@http://localhost:9002/remoteEntry.js',
+        SushiMicroFrontendPhotos: 'SushiMicroFrontendPhotos@http://localhost:9003/remoteEntry.js'
       },
       exposes: {},
       shared: {
