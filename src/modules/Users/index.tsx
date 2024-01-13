@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 
-const SushiMicroFrontendUsers = React.lazy(() => import('SushiMicroFrontendUsers/SushiMicroFrontendUsers'));
+const SushiMicroFrontendUsers = React.lazy(async () => await import('SushiMicroFrontendUsers/SushiMicroFrontendUsers'));
 
 const Users: React.FC = () => {
   return (

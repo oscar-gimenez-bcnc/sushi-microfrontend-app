@@ -1,6 +1,8 @@
 import React, { Suspense } from 'react';
 
-const SushiMicroFrontendAlbums = React.lazy(() => import('SushiMicroFrontendAlbums/SushiMicroFrontendAlbums'));
+const SushiMicroFrontendAlbums = React.lazy(
+  async () => await import('SushiMicroFrontendAlbums/SushiMicroFrontendAlbums')
+);
 
 const Albums: React.FC = () => {
   return (

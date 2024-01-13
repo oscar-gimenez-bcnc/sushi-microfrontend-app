@@ -1,6 +1,6 @@
 import { useRouteError } from 'react-router-dom';
 
-export default function ErrorPage() {
+const ErrorPage: React.FC = () => {
   const error = useRouteError();
   console.error(error);
 
@@ -10,4 +10,6 @@ export default function ErrorPage() {
       <p>Sorry, this route does not exist.</p>
     </div>
   );
-}
+};
+
+export default ErrorPage;
