@@ -1,10 +1,10 @@
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import ErrorPage from '../ErrorPage';
-import Albums from '../modules/Albums';
-import Photos from '../modules/Photos';
-import Users from '../modules/Users';
+import Albums from '../modules/Albums/components';
+import Photos from '../modules/Photos/components';
+import Users from '../modules/Users/components';
 
-import HomePage from '../modules/HomePage';
+import HomePage from '../modules/HomePage/components';
 import AppLayout from '../components/AppLayout';
 
 const router = createBrowserRouter(
