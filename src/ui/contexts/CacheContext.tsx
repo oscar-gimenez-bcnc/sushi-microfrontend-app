@@ -42,6 +42,8 @@ const CacheProvider: React.FC<CacheProviderProps> = ({ children }) => {
   const albumCache: IAlbumsCacheData = { expiry: new Date(), albums: new Map<number, IAlbumCacheItem>() };
   const photoCache: IPhotosCacheData = { expiry: new Date(), photos: new Map<number, IPhotoCacheItem>() };
 
+  const cacheDurationInSeconds = 10;
+
   // Users
   const getUsersCacheData = (): IUsersCacheData => {
     return userCache;
@@ -49,7 +51,7 @@ const CacheProvider: React.FC<CacheProviderProps> = ({ children }) => {
 
   const renewUsersExpiryDate = (): void => {
     const expiryDate = new Date();
-    expiryDate.setSeconds(expiryDate.getSeconds() + 10); // TTL set in 10 seconds
+    expiryDate.setSeconds(expiryDate.getSeconds() + cacheDurationInSeconds);
     userCache.expiry = expiryDate;
   };
 
@@ -65,7 +67,7 @@ const CacheProvider: React.FC<CacheProviderProps> = ({ children }) => {
 
   const setUserCache = (key: number, value: IUser): void => {
     const expiryDate = new Date();
-    expiryDate.setSeconds(expiryDate.getSeconds() + 10); // TTL set in 10 seconds
+    expiryDate.setSeconds(expiryDate.getSeconds() + cacheDurationInSeconds);
     userCache.users.set(key, {
       expiry: expiryDate,
       data: value
@@ -83,7 +85,7 @@ const CacheProvider: React.FC<CacheProviderProps> = ({ children }) => {
 
   const renewAlbumsExpiryDate = (): void => {
     const expiryDate = new Date();
-    expiryDate.setSeconds(expiryDate.getSeconds() + 10); // TTL set in 10 seconds
+    expiryDate.setSeconds(expiryDate.getSeconds() + cacheDurationInSeconds);
     albumCache.expiry = expiryDate;
   };
 
@@ -99,7 +101,7 @@ const CacheProvider: React.FC<CacheProviderProps> = ({ children }) => {
 
   const setAlbumCache = (key: number, value: IAlbum): void => {
     const expiryDate = new Date();
-    expiryDate.setSeconds(expiryDate.getSeconds() + 10); // TTL set in 10 seconds
+    expiryDate.setSeconds(expiryDate.getSeconds() + cacheDurationInSeconds);
     albumCache.albums.set(key, {
       expiry: expiryDate,
       data: value
@@ -117,7 +119,7 @@ const CacheProvider: React.FC<CacheProviderProps> = ({ children }) => {
 
   const renewPhotosExpiryDate = (): void => {
     const expiryDate = new Date();
-    expiryDate.setSeconds(expiryDate.getSeconds() + 10); // TTL set in 10 seconds
+    expiryDate.setSeconds(expiryDate.getSeconds() + cacheDurationInSeconds);
     photoCache.expiry = expiryDate;
   };
 
@@ -133,7 +135,7 @@ const CacheProvider: React.FC<CacheProviderProps> = ({ children }) => {
 
   const setPhotoCache = (key: number, value: IPhoto): void => {
     const expiryDate = new Date();
-    expiryDate.setSeconds(expiryDate.getSeconds() + 10); // TTL set in 10 seconds
+    expiryDate.setSeconds(expiryDate.getSeconds() + cacheDurationInSeconds);
     photoCache.photos.set(key, {
       expiry: expiryDate,
       data: value
