@@ -4,7 +4,6 @@ import React, { Suspense, useContext } from 'react';
 const SushiMicroFrontendUsers = React.lazy(async () => await import('SushiMicroFrontendUsers/SushiMicroFrontendUsers'));
 
 const UsersPage: React.FC = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const { userCacheActions } = useContext(CacheContext);
 
   return (

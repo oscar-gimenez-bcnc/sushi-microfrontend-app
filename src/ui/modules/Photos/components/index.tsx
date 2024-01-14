@@ -6,7 +6,6 @@ const SushiMicroFrontendPhotos = React.lazy(
 );
 
 const PhotosPage: React.FC = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const { photoCacheActions } = useContext(CacheContext);
 
   return (

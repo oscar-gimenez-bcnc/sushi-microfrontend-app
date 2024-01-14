@@ -6,7 +6,6 @@ const SushiMicroFrontendAlbums = React.lazy(
 );
 
 const AlbumsPage: React.FC = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const { albumCacheActions } = useContext(CacheContext);
 
   return (
