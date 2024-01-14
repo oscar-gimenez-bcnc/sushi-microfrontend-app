@@ -5,11 +5,11 @@ const SushiMicroFrontendUsers = React.lazy(async () => await import('SushiMicroF
 
 const UsersPage: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-  const { actions } = useContext(CacheContext);
+  const { userCacheActions } = useContext(CacheContext);
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <SushiMicroFrontendUsers cacheActions={actions} />
+      <SushiMicroFrontendUsers cacheActions={userCacheActions} />
     </Suspense>
   );
 };

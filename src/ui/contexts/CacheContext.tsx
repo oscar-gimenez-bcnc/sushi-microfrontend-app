@@ -1,17 +1,35 @@
+import { type IAlbum } from '@/domain/models/IAlbum';
+import { type IPhoto } from '@/domain/models/IPhoto';
 import { type IUser } from '@/domain/models/IUser';
 import { createContext } from 'react';
 
 interface ICacheContext {
-  actions: ICacheActions;
+  userCacheActions: IUserCacheActions;
+  albumCacheActions: IAlbumCacheActions;
+  photoCacheActions: IPhotoCacheActions;
 }
 
 const CacheContext = createContext<ICacheContext>({
-  actions: {
+  userCacheActions: {
     getUsersCacheData: () => undefined,
     renewUsersExpiryDate: () => {},
     getUserCache: () => undefined,
     setUserCache: () => {},
     clearUsersCache: () => {}
+  },
+  albumCacheActions: {
+    getAlbumsCacheData: () => undefined,
+    renewAlbumsExpiryDate: () => {},
+    getAlbumCache: () => undefined,
+    setAlbumCache: () => {},
+    clearAlbumsCache: () => {}
+  },
+  photoCacheActions: {
+    getPhotosCacheData: () => undefined,
+    renewPhotosExpiryDate: () => {},
+    getPhotoCache: () => undefined,
+    setPhotoCache: () => {},
+    clearPhotosCache: () => {}
   }
 });
 
@@ -20,23 +38,26 @@ interface CacheProviderProps {
 }
 
 const CacheProvider: React.FC<CacheProviderProps> = ({ children }) => {
-  const cache: IUsersCacheData = { expiry: new Date(), users: new Map<number, IUserCacheItem>() };
+  const userCache: IUsersCacheData = { expiry: new Date(), users: new Map<number, IUserCacheItem>() };
+  const albumCache: IAlbumsCacheData = { expiry: new Date(), albums: new Map<number, IAlbumCacheItem>() };
+  const photoCache: IPhotosCacheData = { expiry: new Date(), photos: new Map<number, IPhotoCacheItem>() };
 
+  // Users
   const getUsersCacheData = (): IUsersCacheData => {
-    return cache;
+    return userCache;
   };
 
   const renewUsersExpiryDate = (): void => {
     const expiryDate = new Date();
     expiryDate.setSeconds(expiryDate.getSeconds() + 10); // TTL set in 10 seconds
-    cache.expiry = expiryDate;
+    userCache.expiry = expiryDate;
   };
 
   const getUserCache = (key: number): IUser | undefined => {
-    const cacheValue = cache.users.get(key);
+    const cacheValue = userCache.users.get(key);
     if (cacheValue == null) return undefined;
     if (new Date().getTime() > cacheValue.expiry.getTime()) {
-      cache.users.delete(key);
+      userCache.users.delete(key);
       return undefined;
     }
     return cacheValue.data;
@@ -45,23 +66,105 @@ const CacheProvider: React.FC<CacheProviderProps> = ({ children }) => {
   const setUserCache = (key: number, value: IUser): void => {
     const expiryDate = new Date();
     expiryDate.setSeconds(expiryDate.getSeconds() + 10); // TTL set in 10 seconds
-    cache.users.set(key, {
+    userCache.users.set(key, {
       expiry: expiryDate,
       data: value
     });
   };
 
   const clearUsersCache = (): void => {
-    cache.users.clear();
+    userCache.users.clear();
+  };
+
+  // Albums
+  const getAlbumsCacheData = (): IAlbumsCacheData => {
+    return albumCache;
+  };
+
+  const renewAlbumsExpiryDate = (): void => {
+    const expiryDate = new Date();
+    expiryDate.setSeconds(expiryDate.getSeconds() + 10); // TTL set in 10 seconds
+    albumCache.expiry = expiryDate;
+  };
+
+  const getAlbumCache = (key: number): IAlbum | undefined => {
+    const cacheValue = albumCache.albums.get(key);
+    if (cacheValue == null) return undefined;
+    if (new Date().getTime() > cacheValue.expiry.getTime()) {
+      albumCache.albums.delete(key);
+      return undefined;
+    }
+    return cacheValue.data;
+  };
+
+  const setAlbumCache = (key: number, value: IAlbum): void => {
+    const expiryDate = new Date();
+    expiryDate.setSeconds(expiryDate.getSeconds() + 10); // TTL set in 10 seconds
+    albumCache.albums.set(key, {
+      expiry: expiryDate,
+      data: value
+    });
+  };
+
+  const clearAlbumsCache = (): void => {
+    albumCache.albums.clear();
+  };
+
+  // Photos
+  const getPhotosCacheData = (): IPhotosCacheData => {
+    return photoCache;
+  };
+
+  const renewPhotosExpiryDate = (): void => {
+    const expiryDate = new Date();
+    expiryDate.setSeconds(expiryDate.getSeconds() + 10); // TTL set in 10 seconds
+    photoCache.expiry = expiryDate;
+  };
+
+  const getPhotoCache = (key: number): IPhoto | undefined => {
+    const cacheValue = photoCache.photos.get(key);
+    if (cacheValue == null) return undefined;
+    if (new Date().getTime() > cacheValue.expiry.getTime()) {
+      photoCache.photos.delete(key);
+      return undefined;
+    }
+    return cacheValue.data;
+  };
+
+  const setPhotoCache = (key: number, value: IPhoto): void => {
+    const expiryDate = new Date();
+    expiryDate.setSeconds(expiryDate.getSeconds() + 10); // TTL set in 10 seconds
+    photoCache.photos.set(key, {
+      expiry: expiryDate,
+      data: value
+    });
+  };
+
+  const clearPhotosCache = (): void => {
+    photoCache.photos.clear();
   };
 
   const contextValue = {
-    actions: {
+    userCacheActions: {
       getUsersCacheData,
       renewUsersExpiryDate,
       getUserCache,
       setUserCache,
       clearUsersCache
+    },
+    albumCacheActions: {
+      getAlbumsCacheData,
+      renewAlbumsExpiryDate,
+      getAlbumCache,
+      setAlbumCache,
+      clearAlbumsCache
+    },
+    photoCacheActions: {
+      getPhotosCacheData,
+      renewPhotosExpiryDate,
+      getPhotoCache,
+      setPhotoCache,
+      clearPhotosCache
     }
   };
 
