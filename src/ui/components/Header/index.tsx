@@ -4,8 +4,8 @@ const Header: React.FC = () => {
   return (
     <div className="navbar w-full bg-base-100">
       <div className="navbar-start">
-        <Link to="/" className="btn btn-ghost text-xl">
-          Sushi
+        <Link to="/" className="text-xl font-bold">
+          Sushi Photos
         </Link>
       </div>
       <div className="navbar-end lg:flex">
