@@ -11,8 +11,8 @@
   ],
   "private": true,
   "scripts": {
-    "dev": "webpack serve --mode=development",
-    "build": "webpack --mode=production",
+    "dev": "webpack serve --config webpack.config.js",
+    "build": "webpack --config webpack.config.prod.js",
     "start": "serve dist",
     "test": "npx jest",
     "check-types": "tsc --noEmit",
