@@ -1,3 +1,4 @@
+import MicroFrontendLoader from '@/ui/components/MicroFrontendLoader';
 import { CacheContext } from '@/ui/contexts/CacheContext';
 import React, { Suspense, useContext } from 'react';
 
@@ -7,7 +8,7 @@ const UsersPage: React.FC = () => {
   const { userCacheActions } = useContext(CacheContext);
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<MicroFrontendLoader />}>
       <SushiMicroFrontendUsers cacheActions={userCacheActions} />
     </Suspense>
   );
