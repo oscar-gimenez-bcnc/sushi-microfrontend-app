@@ -122,7 +122,7 @@ The concept of ports and adapters can be visualized in the application when usin
 <sub>(In the image: sushi-microfrontend-users)</sub>
 ![Hexagonal](http://sushi-microfrontend-app.s3-website.eu-west-3.amazonaws.com/hexagonal.png)
 
-If we focus on sushi-microfrontend-users, we can find two use cases: List Users and Download Users, while <code>dataDownload</code> and <code>dataSource</code> are two ports with different implementations: <code>dataDownload</code> implements the solution for CSV and JSON, while <code>dataSource</code> serves different data sources, which are explained in the upper [Features](##Features) section.
+If we focus on sushi-microfrontend-users, we can find two use cases: List Users and Download Users, while <code>dataDownload</code> and <code>dataSource</code> are two ports with different implementations: <code>dataDownload</code> implements the solution for CSV and JSON, while <code>dataSource</code> serves different data sources, which are explained in the upper Features section.
 
 ### Shell application <sub><sup>(sushi-microfrontend-app)</sup></sub>
 
@@ -171,7 +171,9 @@ In the case of sushi-microfrontend-app, the structure of src/ is established as 
 ## 💡 Run in local environment
 
 To run the application on your local machine, you just need to clone the four repositories and execute the following commands in each of them:
+
 <code>npm i</code> (Install dependencies)
+
 <code>npm run dev</code> (Runs the application in the port indicated in webpack config)
 
 ## 🚀 Deploy in production
@@ -184,6 +186,7 @@ Para obtener el bundle que puedes usar en producción, puedes ejecutar este coma
 Each microfrontend has a series of tests, including a unit test for each functionality and a set of end-to-end tests in Cypress.
 
 To run the tests, you can navigate to the root of each microfrontend and execute:
+
 <code>npm run test-jest</code> (Unit testing with Jest)
 
 <code>npm run test-cypress</code> (E2E Test with Cypress)
@@ -193,6 +196,9 @@ To run the tests, you can navigate to the root of each microfrontend and execute
 ### 🐶 Husky (git-hooks)
 
 This project uses Husky to get benefit of the following hooks:
+
 <b>commit-msg</b>: for Commitlint
+
 <b>pre-commit</b>: To check linter errors
+
 <b>pre-push</b>: To run Jest Tests
