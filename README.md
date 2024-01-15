@@ -178,7 +178,8 @@ To run the application on your local machine, you just need to clone the four re
 
 ## 🚀 Deploy in production
 
-Para obtener el bundle que puedes usar en producción, puedes ejecutar este comando en cada microfrontend y en la aplicación shell:
+To obtain the bundle that you can use in production, you can execute this command in each microfrontend and in the shell application:
+
 <code>npm run build</code>
 
 ## 🚦 Tests
