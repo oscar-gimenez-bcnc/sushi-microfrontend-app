@@ -11,6 +11,7 @@ const router = createBrowserRouter(
     <Route element={<AppLayout />} errorElement={<ErrorPage />}>
       <Route path="/" element={<HomePage />} />
       <Route path="/users" element={<UsersPage />} />
+      <Route path="/users/:id" element={<UsersPage />} />
       <Route path="/albums" element={<AlbumsPage />} />
       <Route path="/photos" element={<PhotosPage />} />
     </Route>
