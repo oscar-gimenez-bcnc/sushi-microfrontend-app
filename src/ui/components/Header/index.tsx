@@ -1,5 +1,6 @@
 import { IAlbum } from '@/domain/models/IAlbum';
-import { useEffect } from 'react';
+import { albumNotification$ } from '@/eventBus';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
@@ -8,6 +9,49 @@ const Header: React.FC = () => {
     console.log('albumNotificationCustomEvent received');
     console.log(customEvent.detail);
   });
+
+  const [lastValues, setLastValues] = useState<any[]>([]);
+
+  /* useEffect(() => {
+    console.log('albumNotification');
+    console.log(albumNotification$);
+    const subscription = albumNotification$.subscribe({
+      next: (album: any) => {
+        console.log(`Album notification RxJs received:`, album);
+        lastValues.push(album);
+        setLastValues(lastValues);
+        console.log('Eventos recibidos:', lastValues);
+      }
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []); */
+
+  useEffect(() => {
+    const handleEventEmitterFederated = (data: any) => {
+      console.log('albumNotificationEventEmitterFederated received');
+      console.log(data);
+    };
+
+    /* console.log('albumNotificationEventEmitterFederated received');
+    console.log(albumNotification$);
+    const subscription = albumNotification$.subscribe({
+      next: (album: any) => {
+        console.log(`Album notification RxJs received:`, album);
+        lastValues.push(album);
+        setLastValues(lastValues);
+        console.log('Eventos recibidos:', lastValues);
+      }
+    }); */
+
+    albumNotification$.on('albumNotificationEventEmitterFederated', handleEventEmitterFederated);
+
+    return () => {
+      albumNotification$.off('albumNotificationEventEmitterFederated', handleEventEmitterFederated);
+    };
+  }, []);
 
   useEffect(() => {
     const handleEventEmitter = (data: any) => {
@@ -33,6 +77,7 @@ const Header: React.FC = () => {
         <Link to="/" className="text-xl font-bold">
           Sushi Photos
         </Link>
+        {/* <button onClick={() => albumNotification$.next({ album: 'hola' })}>Puntba</button> */}
       </div>
       <div className="navbar-end lg:flex">
         <ul className="menu menu-horizontal gap-4 px-1">

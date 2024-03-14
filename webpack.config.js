@@ -55,13 +55,20 @@ module.exports = {
       remotes: {
         SushiMicroFrontendUsers: 'SushiMicroFrontendUsers@http://localhost:9001/remoteEntry.js',
         SushiMicroFrontendAlbums: 'SushiMicroFrontendAlbums@http://localhost:9002/remoteEntry.js',
-        SushiMicroFrontendPhotos: 'SushiMicroFrontendPhotos@http://localhost:9003/remoteEntry.js'
+        SushiMicroFrontendPhotos: 'SushiMicroFrontendPhotos@http://localhost:9003/remoteEntry.js',
+        SushiMicroFrontendNotifications: 'SushiMicroFrontendNotifications@http://localhost:9005/remoteEntry.js'
       },
-      exposes: {},
+      exposes: {
+        './EventBus': './src/eventBus.ts'
+      },
       shared: {
         react: {
           singleton: true,
           requiredVersion: dependencies.react
+        },
+        rxjs: {
+          singleton: true,
+          requiredVersion: dependencies.rxjs
         },
         'react-dom': {
           singleton: true,
