@@ -5,6 +5,7 @@ import UsersPage from '@/ui/modules/Users/components';
 import HomePage from '@/ui/modules/HomePage/components';
 import AppLayout from '@/ui/components/AppLayout';
 import ErrorPage from '@/ErrorPage';
+import ReviewPage from '@/ui/modules/Review/components';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -14,6 +15,8 @@ const router = createBrowserRouter(
       <Route path="/users/:id" element={<UsersPage />} />
       <Route path="/albums" element={<AlbumsPage />} />
       <Route path="/photos" element={<PhotosPage />} />
+      <Route path="/review/" element={<ReviewPage />} />
+      {/* <Route path="/review/:id" element={<ReviewPage />} /> */}
     </Route>
   )
 );

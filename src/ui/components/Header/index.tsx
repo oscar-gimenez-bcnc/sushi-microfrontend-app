@@ -90,6 +90,9 @@ const Header: React.FC = () => {
           <li>
             <Link to="/photos">Photos</Link>
           </li>
+          <li>
+            <Link to="/review">NextJS MF (Broken)</Link>
+          </li>
         </ul>
       </div>
     </div>

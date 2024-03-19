@@ -56,7 +56,8 @@ module.exports = {
         SushiMicroFrontendUsers: 'SushiMicroFrontendUsers@http://localhost:9001/remoteEntry.js',
         SushiMicroFrontendAlbums: 'SushiMicroFrontendAlbums@http://localhost:9002/remoteEntry.js',
         SushiMicroFrontendPhotos: 'SushiMicroFrontendPhotos@http://localhost:9003/remoteEntry.js',
-        SushiMicroFrontendNotifications: 'SushiMicroFrontendNotifications@http://localhost:9005/remoteEntry.js'
+        SushiMicroFrontendNotifications: 'SushiMicroFrontendNotifications@http://localhost:9005/remoteEntry.js',
+        SushiMicroFrontendReviews: 'SushiMicroFrontendReviews@http://localhost:3000/_next/static/chunks/remoteEntry.js'
       },
       exposes: {
         './EventBus': './src/eventBus.ts'
